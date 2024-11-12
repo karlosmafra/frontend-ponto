@@ -3,6 +3,7 @@ const modalEditar = document.getElementById("modal-editar");
 const campoData = document.getElementById("campo-data");
 const campoHora = document.getElementById("campo-hora");
 const campoTipo = document.getElementById("campo-tipo");
+const campoObs = document.getElementById("campo-obs");
 const botaoSalvar = document.getElementById("botao-salvar");
 const botaoFechar = document.getElementById("botao-fechar");
 
@@ -44,6 +45,7 @@ function abrirModalEditar(index) {
     campoData.value = ponto.data;
     campoHora.value = ponto.hora;
     campoTipo.value = ponto.tipo;
+    campoObs.value = ponto.obs || '';
 
     // Salva o índice do ponto para editar depois
     botaoSalvar.dataset.index = index;
@@ -57,6 +59,7 @@ botaoSalvar.addEventListener("click", () => {
     pontos[index].data = campoData.value;
     pontos[index].hora = campoHora.value;
     pontos[index].tipo = campoTipo.value;
+    pontos[index].obs = campoObs.value;
 
     // Atualiza o localStorage
     localStorage.setItem("pontos", JSON.stringify(pontos));
